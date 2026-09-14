@@ -4,8 +4,17 @@
 # in manifest.yaml: the Marketplace keys a release by its version, so running it
 # without a version bump would only try to re-submit an existing release.
 #
-# Setup (one-time): add a repository secret `PLUGIN_ACTION` — a GitHub PAT
-# (classic, `repo` scope) that can push branches to the fork `ikki6666/dify-plugins`.
+# Setup (one-time): add a repository secret `PLUGIN_ACTION` — a GitHub token that
+# can push branches to the fork `<manifest.author>/dify-plugins`. Since the manifest
+# author is now `origin-power-ai`, the token must have access to
+# `origin-power-ai/dify-plugins` (Contents: read+write, Pull requests: read+write).
+# A classic PAT with the `repo` scope owned by someone who can push to that org fork
+# also works.
+#
+# NOTE: this workflow opens a minimal PR body. It is fine for *version updates*
+# (same author directory) but NOT for a brand-new listing, which needs the official
+# submission template, an English-only body, and a "supersedes <old listing>" note —
+# open those by hand (see docs/migrate-marketplace-author-to-org.md).
 
 name: Publish plugin to Dify Marketplace (auto PR)
 
