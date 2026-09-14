@@ -1,6 +1,13 @@
 # 执行清单：把插件市场身份迁到公司组织（方案 B）
 
-> 背景：插件 v0.0.5 已以 `ikki6666/origin_power_ai` 上架。源码仓库已迁至 `origin-power-ai/dify-plugin-origin-power-ai`（方案 A 已完成）。
+> **状态：✅ 已于 2026-09-14 执行完毕**——新 listing `origin-power-ai/origin_power_ai` v1.0.0 已上线
+> （https://marketplace.dify.ai/plugin/origin-power-ai/origin_power_ai），
+> 旧 listing `ikki6666/origin_power_ai` 已由 Dify 官方加上弃用提示并跳转到新插件。
+> 执行细节：Issue #3066 得到 crazywoola 答复（**不支持转移，需新开 listing；旧条目由官方加弃用+重定向**）
+> → PR #3078（单文件、pre-check 一次全绿）→ 合并后 5 分钟内上架。
+> 本文档保留为流程记录；下方清单为实际执行顺序（含每步的坑）。
+
+> 背景：插件 v0.0.5 曾以 `ikki6666/origin_power_ai` 上架。源码仓库已迁至 `origin-power-ai/dify-plugin-origin-power-ai`（方案 A 已完成）。
 > 本清单用于把市场身份（Plugin ID 前缀）也换成公司组织 `origin-power-ai`。
 > 关键机制：市场身份 = manifest 的 `author` + `name`，与 GitHub 仓库位置无关；`author` 必须与推送 PR 的 fork 所有者一致（安装时校验 `plugin_unique_identifier`）。
 

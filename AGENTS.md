@@ -8,11 +8,13 @@ rejected PRs.
 
 A Dify **model provider plugin** for the Origin Power AI gateway (an OpenAI-compatible
 endpoint aggregating GLM / MiniMax models). Published on the Dify Marketplace as
-`ikki6666/origin_power_ai` (Verified by Dify).
+`origin-power-ai/origin_power_ai` (Verified by Dify).
 
 - Source repo (this one): `origin-power-ai/dify-plugin-origin-power-ai` (org-owned; moved
   from `Ikki6666/origin-power-ai`, which 301-redirects here)
-- Marketplace page: https://marketplace.dify.ai/plugins/ikki6666/origin_power_ai
+- Marketplace page (active): https://marketplace.dify.ai/plugin/origin-power-ai/origin_power_ai
+- Legacy listing `ikki6666/origin_power_ai` is **deprecated** (Dify added the notice + redirect);
+  never publish new versions there
 - Upstream registry repo (where PRs go): https://github.com/langgenius/dify-plugins
 
 ## Layout
@@ -80,7 +82,8 @@ dify plugin package ./ -o origin_power_ai-<version>.difypkg
 1. Bump `version` in `manifest.yaml` (and any user-facing changelog/Release notes).
 2. Commit, then in GitHub → Actions → **Publish plugin to Dify Marketplace (auto PR)** → *Run
    workflow*. It packages the plugin and opens the PR to `langgenius/dify-plugins` from the fork
-   given by the `PLUGIN_ACTION` secret (currently `ikki6666/dify-plugins`).
+   named after `manifest.author` — i.e. `origin-power-ai/dify-plugins` — so `PLUGIN_ACTION` must be
+   a PAT that can push there.
 3. Watch the PR checks (`apply-risk-label`, `pre-check-plugin`); fix per the rules above.
 4. After merge, the Marketplace listing updates automatically. Optionally attach the `.difypkg` to
    a GitHub Release here as well.
@@ -94,14 +97,18 @@ dify plugin package ./ -o origin_power_ai-<version>.difypkg
 
 ## Current state (2026-09-14)
 
-- Marketplace: `ikki6666/origin_power_ai` v0.0.5 live, Verified by Dify.
-- Source repo moved to the `origin-power-ai` org; the listing is still under the personal handle.
-- **Resolved**: asked maintainers whether listing ownership can be transferred to the org
-  (`langgenius/dify-plugins` issue #3066). Answer (2026-09-14, crazywoola): transfer is **not**
-  supported — submit a **new package under the org handle**, and the team will add a deprecation
-  notice on the old listing that redirects to the new one (so we do **not** publish a deprecation
-  version ourselves).
-- Executed: `author` → `origin-power-ai`, `version` → `1.0.0`, packaged as
-  `origin_power_ai-1.0.0.difypkg` (Plugin ID becomes `origin-power-ai/origin_power_ai`).
-  Rationale and remaining steps: `docs/migrate-marketplace-author-to-org.md`.
+- **Marketplace (active)**: `origin-power-ai/origin_power_ai` **v1.0.0**, Verified by Dify —
+  https://marketplace.dify.ai/plugin/origin-power-ai/origin_power_ai
+- **Legacy listing**: `ikki6666/origin_power_ai` v0.0.5 now shows the deprecation notice
+  ("deprecated due to ownership transferred") and points users to the new one.
+- Migration answered and executed the same day (issue #3066 → PR **#3078**, single-file, checks green
+  first try, merged in ~5 minutes). Maintainer guidance: ownership **cannot** be transferred; publish
+  a new package under the org and the team adds the deprecation notice/redirect. Do **not** publish
+  further versions under `ikki6666/...`.
+- Executed procedure + rationale: `docs/migrate-marketplace-author-to-org.md`.
+- **Open follow-up**: claim the listing at https://creators.dify.ai with an organization account
+  (recommended by the maintainer) to track feedback/likes/stars.
+- Note for self-hosted users (including the company instance): switching from the old listing to the
+  new one means uninstalling and reinstalling the plugin — Dify does not migrate installed plugins
+  between identities.
 
