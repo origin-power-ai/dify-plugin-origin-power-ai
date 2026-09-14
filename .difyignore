@@ -6,3 +6,6 @@ __pycache__/
 .env
 *.difypkg
 .git/
+# 内部文档：不随发布包分发（避免把内部流程/个人账号信息带进公开制品）
+AGENTS.md
+docs/

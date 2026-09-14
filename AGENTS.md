@@ -92,11 +92,16 @@ dify plugin package ./ -o origin_power_ai-<version>.difypkg
 - Don't commit `.env`, debug keys, or API keys (`.gitignore` covers `.env`).
 - Don't submit a PR when the only change is a version bump caused by an unrelated doc edit.
 
-## Current state (2026-09)
+## Current state (2026-09-14)
 
 - Marketplace: `ikki6666/origin_power_ai` v0.0.5 live, Verified by Dify.
 - Source repo moved to the `origin-power-ai` org; the listing is still under the personal handle.
-- **Open thread**: asked maintainers whether listing ownership can be transferred to the org
-  (`langgenius/dify-plugins` issue #3066); answer promised for Monday 2026-09-15. If the answer is
-  "publish a new listing", follow `docs/migrate-marketplace-author-to-org.md` (author →
-  `origin-power-ai`, version `1.0.0`, single-file PR, then deprecate the old listing).
+- **Resolved**: asked maintainers whether listing ownership can be transferred to the org
+  (`langgenius/dify-plugins` issue #3066). Answer (2026-09-14, crazywoola): transfer is **not**
+  supported — submit a **new package under the org handle**, and the team will add a deprecation
+  notice on the old listing that redirects to the new one (so we do **not** publish a deprecation
+  version ourselves).
+- Executed: `author` → `origin-power-ai`, `version` → `1.0.0`, packaged as
+  `origin_power_ai-1.0.0.difypkg` (Plugin ID becomes `origin-power-ai/origin_power_ai`).
+  Rationale and remaining steps: `docs/migrate-marketplace-author-to-org.md`.
+

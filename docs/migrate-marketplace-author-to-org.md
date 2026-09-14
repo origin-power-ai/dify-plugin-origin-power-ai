@@ -19,12 +19,13 @@
 
 ## 2. 更新源码（`origin-power-ai/dify-plugin-origin-power-ai`）
 
-- [ ] `manifest.yaml`：`author: "origin-power-ai"`（当前为 `ikki6666`）
-- [ ] `manifest.yaml`：`version:` bump 到约定版本（如 `1.0.0`）
-- [ ] 确认 `repo:` 已是 `https://github.com/origin-power-ai/dify-plugin-origin-power-ai`
-- [ ] 若 provider YAML/代码里出现 author 字段，一并改为 `origin-power-ai`
-- [ ] 重新打包：`dify plugin package ./ -o origin_power_ai-<version>.difypkg`
-- [ ] 本地校验包内 manifest：author/version/repo 正确
+- [x] `manifest.yaml`：`author: "origin-power-ai"`（原 `ikki6666`）
+- [x] `manifest.yaml`：`version: 1.0.0`
+- [x] 确认 `repo:` 已是 `https://github.com/origin-power-ai/dify-plugin-origin-power-ai`
+- [x] provider YAML/代码中无 author 字段需改（已核查）
+- [x] 重新打包：`dify plugin package ./ -o origin_power_ai-1.0.0.difypkg`
+- [x] 本地校验：包内 author=`origin-power-ai` / version=`1.0.0` / repo 正确；无 `.git`；
+      文件清单与 v0.0.5 完全一致（另在 `.difyignore` 排除内部文档 `AGENTS.md`、`docs/`）
 
 ## 3. 提交市场 PR
 
@@ -40,10 +41,12 @@
 
 ## 4. 上线与旧条目处置
 
+> 2026-09-14 官方答复（issue #3066，crazywoola）：不支持转移归属，按本清单「新 listing」路线执行；
+> **旧 listing 由官方加 deprecated 提示并自动跳转到新 listing**，因此下面「在旧目录再发一个版本」
+> 这一步**不需要我们做**。
+
 - [ ] 合并后确认新 listing：`https://marketplace.dify.ai/plugins/origin-power-ai/origin_power_ai`
-- [ ] 旧 listing（`ikki6666/origin_power_ai`）按官方弃用规范处理：
-  - [ ] 在旧目录再发一个版本，manifest `description` 写明「已迁移至 `origin-power-ai/origin_power_ai`，请卸载后重新安装」，并在 GitHub Release Notes 说明
-  - [ ] 考虑联系 Dify 团队请求下架/转移（无自助流程，需沟通）
+- [ ] 旧 listing（`ikki6666/origin_power_ai`）：等官方加弃用提示 + 跳转（无需我方发版）
 - [ ] 通知已安装用户：Dify 不会自动迁移插件身份，需卸载旧插件、从新 listing 重新安装（凭证需重填）
 
 ## 5. CI / 发布流程
